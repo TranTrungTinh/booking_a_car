@@ -13,7 +13,7 @@
 		8498A694206940C0002825F9 /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8498A693206940C0002825F9 /* CircleView.swift */; };
 		8498A69620694318002825F9 /* RoundedShadowButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8498A69520694318002825F9 /* RoundedShadowButton.swift */; };
 		84B8847B2049A12600F37643 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B8847A2049A12600F37643 /* AppDelegate.swift */; };
-		84B8847D2049A12600F37643 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B8847C2049A12600F37643 /* ViewController.swift */; };
+		84B8847D2049A12600F37643 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B8847C2049A12600F37643 /* HomeVC.swift */; };
 		84B884802049A12600F37643 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84B8847E2049A12600F37643 /* Main.storyboard */; };
 		84B884822049A12600F37643 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84B884812049A12600F37643 /* Assets.xcassets */; };
 		84B884852049A12600F37643 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84B884832049A12600F37643 /* LaunchScreen.storyboard */; };
@@ -29,7 +29,7 @@
 		8498A69520694318002825F9 /* RoundedShadowButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedShadowButton.swift; sourceTree = "<group>"; };
 		84B884772049A12600F37643 /* booking_a_car.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = booking_a_car.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84B8847A2049A12600F37643 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		84B8847C2049A12600F37643 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		84B8847C2049A12600F37643 /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		84B8847F2049A12600F37643 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		84B884812049A12600F37643 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		84B884842049A12600F37643 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -101,7 +101,7 @@
 				8474EC6A206203B200668850 /* View */,
 				8474EC6B206203B900668850 /* Controller */,
 				84B8847A2049A12600F37643 /* AppDelegate.swift */,
-				84B8847C2049A12600F37643 /* ViewController.swift */,
+				84B8847C2049A12600F37643 /* HomeVC.swift */,
 				84B8847E2049A12600F37643 /* Main.storyboard */,
 				84B884812049A12600F37643 /* Assets.xcassets */,
 				84B884832049A12600F37643 /* LaunchScreen.storyboard */,
@@ -266,7 +266,7 @@
 			files = (
 				8498A69620694318002825F9 /* RoundedShadowButton.swift in Sources */,
 				8498A694206940C0002825F9 /* CircleView.swift in Sources */,
-				84B8847D2049A12600F37643 /* ViewController.swift in Sources */,
+				84B8847D2049A12600F37643 /* HomeVC.swift in Sources */,
 				8498A69020693A77002825F9 /* RoundImageView.swift in Sources */,
 				8498A69220693ED2002825F9 /* RoundedShadowView.swift in Sources */,
 				84B8847B2049A12600F37643 /* AppDelegate.swift in Sources */,
