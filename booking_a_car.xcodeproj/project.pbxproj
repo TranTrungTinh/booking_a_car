@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		84530716206BDD2A00B5488F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84530715206BDD2A00B5488F /* GoogleService-Info.plist */; };
+		84530719206BDF9800B5488F /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84530718206BDF9800B5488F /* DataService.swift */; };
 		8474EC6E2062040900668850 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8474EC6D2062040900668850 /* GradientView.swift */; };
 		847879652069E4B600980610 /* LeftSidePanelVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847879642069E4B600980610 /* LeftSidePanelVC.swift */; };
 		847879672069E54700980610 /* ContainerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847879662069E54700980610 /* ContainerVC.swift */; };
@@ -28,6 +30,8 @@
 
 /* Begin PBXFileReference section */
 		00820F442E2569542F134AFE /* Pods-booking_a_car.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-booking_a_car.debug.xcconfig"; path = "Pods/Target Support Files/Pods-booking_a_car/Pods-booking_a_car.debug.xcconfig"; sourceTree = "<group>"; };
+		84530715206BDD2A00B5488F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		84530718206BDF9800B5488F /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		8474EC6D2062040900668850 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		847879642069E4B600980610 /* LeftSidePanelVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftSidePanelVC.swift; sourceTree = "<group>"; };
 		847879662069E54700980610 /* ContainerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerVC.swift; sourceTree = "<group>"; };
@@ -62,6 +66,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		84530717206BDF8100B5488F /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				84530718206BDF9800B5488F /* DataService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		8474EC6A206203B200668850 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -130,6 +142,7 @@
 		84B884792049A12600F37643 /* booking_a_car */ = {
 			isa = PBXGroup;
 			children = (
+				84530717206BDF8100B5488F /* Services */,
 				848A67B4206B2552006C72D6 /* Extensions */,
 				847879682069E9DB00980610 /* Protocols */,
 				8474EC6C206203C300668850 /* Model */,
@@ -140,6 +153,7 @@
 				84B884812049A12600F37643 /* Assets.xcassets */,
 				84B884832049A12600F37643 /* LaunchScreen.storyboard */,
 				84B884862049A12600F37643 /* Info.plist */,
+				84530715206BDD2A00B5488F /* GoogleService-Info.plist */,
 			);
 			path = booking_a_car;
 			sourceTree = "<group>";
@@ -224,6 +238,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				84B884852049A12600F37643 /* LaunchScreen.storyboard in Resources */,
+				84530716206BDD2A00B5488F /* GoogleService-Info.plist in Resources */,
 				84B884822049A12600F37643 /* Assets.xcassets in Resources */,
 				84B884802049A12600F37643 /* Main.storyboard in Resources */,
 			);
@@ -299,6 +314,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8478796A2069EA0A00980610 /* CenterVCDelegate.swift in Sources */,
+				84530719206BDF9800B5488F /* DataService.swift in Sources */,
 				8498A69620694318002825F9 /* RoundedShadowButton.swift in Sources */,
 				848A67B8206B33D6006C72D6 /* LoginVC.swift in Sources */,
 				847879652069E4B600980610 /* LeftSidePanelVC.swift in Sources */,

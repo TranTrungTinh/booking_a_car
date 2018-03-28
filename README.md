@@ -14,7 +14,7 @@ git clone https://github.com/TranTrungTinh/booking_a_car.git
 
 ## Usage
 ```
-1. Open booking_a_car_xcworkspace
+1. Open booking_a_car.xcworkspace
 2. Choose simulator
 3. Run
 ```
