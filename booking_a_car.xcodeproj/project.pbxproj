@@ -11,6 +11,9 @@
 		847879652069E4B600980610 /* LeftSidePanelVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847879642069E4B600980610 /* LeftSidePanelVC.swift */; };
 		847879672069E54700980610 /* ContainerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847879662069E54700980610 /* ContainerVC.swift */; };
 		8478796A2069EA0A00980610 /* CenterVCDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847879692069EA0A00980610 /* CenterVCDelegate.swift */; };
+		848A67B6206B2584006C72D6 /* UIViewExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848A67B5206B2584006C72D6 /* UIViewExt.swift */; };
+		848A67B8206B33D6006C72D6 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848A67B7206B33D6006C72D6 /* LoginVC.swift */; };
+		848A67BA206B360A006C72D6 /* RoundedCornerTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848A67B9206B360A006C72D6 /* RoundedCornerTextField.swift */; };
 		8498A69020693A77002825F9 /* RoundImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8498A68F20693A77002825F9 /* RoundImageView.swift */; };
 		8498A69220693ED2002825F9 /* RoundedShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8498A69120693ED2002825F9 /* RoundedShadowView.swift */; };
 		8498A694206940C0002825F9 /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8498A693206940C0002825F9 /* CircleView.swift */; };
@@ -29,6 +32,9 @@
 		847879642069E4B600980610 /* LeftSidePanelVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftSidePanelVC.swift; sourceTree = "<group>"; };
 		847879662069E54700980610 /* ContainerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerVC.swift; sourceTree = "<group>"; };
 		847879692069EA0A00980610 /* CenterVCDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenterVCDelegate.swift; sourceTree = "<group>"; };
+		848A67B5206B2584006C72D6 /* UIViewExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExt.swift; sourceTree = "<group>"; };
+		848A67B7206B33D6006C72D6 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		848A67B9206B360A006C72D6 /* RoundedCornerTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCornerTextField.swift; sourceTree = "<group>"; };
 		8498A68F20693A77002825F9 /* RoundImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundImageView.swift; sourceTree = "<group>"; };
 		8498A69120693ED2002825F9 /* RoundedShadowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedShadowView.swift; sourceTree = "<group>"; };
 		8498A693206940C0002825F9 /* CircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
@@ -64,6 +70,7 @@
 				8498A69120693ED2002825F9 /* RoundedShadowView.swift */,
 				8498A693206940C0002825F9 /* CircleView.swift */,
 				8498A69520694318002825F9 /* RoundedShadowButton.swift */,
+				848A67B9206B360A006C72D6 /* RoundedCornerTextField.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -74,6 +81,7 @@
 				84B8847C2049A12600F37643 /* HomeVC.swift */,
 				847879642069E4B600980610 /* LeftSidePanelVC.swift */,
 				847879662069E54700980610 /* ContainerVC.swift */,
+				848A67B7206B33D6006C72D6 /* LoginVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -91,6 +99,14 @@
 				847879692069EA0A00980610 /* CenterVCDelegate.swift */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		848A67B4206B2552006C72D6 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				848A67B5206B2584006C72D6 /* UIViewExt.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		84B8846E2049A12600F37643 = {
@@ -114,6 +130,7 @@
 		84B884792049A12600F37643 /* booking_a_car */ = {
 			isa = PBXGroup;
 			children = (
+				848A67B4206B2552006C72D6 /* Extensions */,
 				847879682069E9DB00980610 /* Protocols */,
 				8474EC6C206203C300668850 /* Model */,
 				8474EC6A206203B200668850 /* View */,
@@ -283,12 +300,15 @@
 			files = (
 				8478796A2069EA0A00980610 /* CenterVCDelegate.swift in Sources */,
 				8498A69620694318002825F9 /* RoundedShadowButton.swift in Sources */,
+				848A67B8206B33D6006C72D6 /* LoginVC.swift in Sources */,
 				847879652069E4B600980610 /* LeftSidePanelVC.swift in Sources */,
 				8498A694206940C0002825F9 /* CircleView.swift in Sources */,
 				847879672069E54700980610 /* ContainerVC.swift in Sources */,
+				848A67B6206B2584006C72D6 /* UIViewExt.swift in Sources */,
 				84B8847D2049A12600F37643 /* HomeVC.swift in Sources */,
 				8498A69020693A77002825F9 /* RoundImageView.swift in Sources */,
 				8498A69220693ED2002825F9 /* RoundedShadowView.swift in Sources */,
+				848A67BA206B360A006C72D6 /* RoundedCornerTextField.swift in Sources */,
 				84B8847B2049A12600F37643 /* AppDelegate.swift in Sources */,
 				8474EC6E2062040900668850 /* GradientView.swift in Sources */,
 			);
