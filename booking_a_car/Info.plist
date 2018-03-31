@@ -43,5 +43,9 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>SMEBBER needs your location so our drivers can find you</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>SMEBBER needs your location so our drivers can find you</string>
 </dict>
 </plist>
