@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		84530716206BDD2A00B5488F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84530715206BDD2A00B5488F /* GoogleService-Info.plist */; };
 		84530719206BDF9800B5488F /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84530718206BDF9800B5488F /* DataService.swift */; };
+		846F94172071118E0079C5CC /* UpdateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846F94162071118E0079C5CC /* UpdateService.swift */; };
 		8474EC6E2062040900668850 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8474EC6D2062040900668850 /* GradientView.swift */; };
 		847879652069E4B600980610 /* LeftSidePanelVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847879642069E4B600980610 /* LeftSidePanelVC.swift */; };
 		847879672069E54700980610 /* ContainerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847879662069E54700980610 /* ContainerVC.swift */; };
@@ -32,6 +33,7 @@
 		00820F442E2569542F134AFE /* Pods-booking_a_car.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-booking_a_car.debug.xcconfig"; path = "Pods/Target Support Files/Pods-booking_a_car/Pods-booking_a_car.debug.xcconfig"; sourceTree = "<group>"; };
 		84530715206BDD2A00B5488F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		84530718206BDF9800B5488F /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
+		846F94162071118E0079C5CC /* UpdateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateService.swift; sourceTree = "<group>"; };
 		8474EC6D2062040900668850 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		847879642069E4B600980610 /* LeftSidePanelVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftSidePanelVC.swift; sourceTree = "<group>"; };
 		847879662069E54700980610 /* ContainerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerVC.swift; sourceTree = "<group>"; };
@@ -70,6 +72,7 @@
 			isa = PBXGroup;
 			children = (
 				84530718206BDF9800B5488F /* DataService.swift */,
+				846F94162071118E0079C5CC /* UpdateService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -322,6 +325,7 @@
 				847879672069E54700980610 /* ContainerVC.swift in Sources */,
 				848A67B6206B2584006C72D6 /* UIViewExt.swift in Sources */,
 				84B8847D2049A12600F37643 /* HomeVC.swift in Sources */,
+				846F94172071118E0079C5CC /* UpdateService.swift in Sources */,
 				8498A69020693A77002825F9 /* RoundImageView.swift in Sources */,
 				8498A69220693ED2002825F9 /* RoundedShadowView.swift in Sources */,
 				848A67BA206B360A006C72D6 /* RoundedCornerTextField.swift in Sources */,
