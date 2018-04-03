@@ -133,7 +133,7 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Where are you going?" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Vev-RI-BpJ">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Where are you going?" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Vev-RI-BpJ">
                                                 <rect key="frame" x="25" y="1.6666666666666714" width="309" height="22"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="16"/>
@@ -212,6 +212,9 @@
                     </view>
                     <connections>
                         <outlet property="actionBtn" destination="aCw-dN-Wxz" id="Yzr-IW-wIE"/>
+                        <outlet property="centerBtn" destination="HS5-Bx-U77" id="ez0-Oy-AB8"/>
+                        <outlet property="destinationCircle" destination="jO4-a2-QVG" id="FmZ-Qb-Igl"/>
+                        <outlet property="destinationTextField" destination="Vev-RI-BpJ" id="Mlq-th-J7d"/>
                         <outlet property="mapView" destination="zUi-ri-81X" id="hhA-mp-QZ0"/>
                     </connections>
                 </viewController>
