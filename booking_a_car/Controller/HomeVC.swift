@@ -128,7 +128,7 @@ class HomeVC: UIViewController {
 
 extension HomeVC: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        if status == .authorizedAlways {
+        if status == .authorizedWhenInUse || status == .authorizedAlways {
             mapView.showsUserLocation = true
             mapView.userTrackingMode = .follow
         }
