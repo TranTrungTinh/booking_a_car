@@ -28,6 +28,7 @@
 		84B884822049A12600F37643 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84B884812049A12600F37643 /* Assets.xcassets */; };
 		84B884852049A12600F37643 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84B884832049A12600F37643 /* LaunchScreen.storyboard */; };
 		A9B9CF3ACAA828D35A7411EB /* Pods_booking_a_car.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9657579C95664D212B5D2ED9 /* Pods_booking_a_car.framework */; };
+		DECF6F8220864A03000D2229 /* PassengerAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DECF6F8120864A03000D2229 /* PassengerAnnotation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +57,7 @@
 		84B884862049A12600F37643 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9657579C95664D212B5D2ED9 /* Pods_booking_a_car.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_booking_a_car.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C27901B21DD2D3EE40F37626 /* Pods-booking_a_car.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-booking_a_car.release.xcconfig"; path = "Pods/Target Support Files/Pods-booking_a_car/Pods-booking_a_car.release.xcconfig"; sourceTree = "<group>"; };
+		DECF6F8120864A03000D2229 /* PassengerAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassengerAnnotation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +91,7 @@
 				8498A69520694318002825F9 /* RoundedShadowButton.swift */,
 				848A67B9206B360A006C72D6 /* RoundedCornerTextField.swift */,
 				846F9418207119C40079C5CC /* DriverAnnotation.swift */,
+				DECF6F8120864A03000D2229 /* PassengerAnnotation.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -211,7 +214,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0920;
-				LastUpgradeCheck = 0920;
+				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = "Trung Tinh";
 				TargetAttributes = {
 					84B884762049A12600F37643 = {
@@ -326,6 +329,7 @@
 				847879652069E4B600980610 /* LeftSidePanelVC.swift in Sources */,
 				8498A694206940C0002825F9 /* CircleView.swift in Sources */,
 				847879672069E54700980610 /* ContainerVC.swift in Sources */,
+				DECF6F8220864A03000D2229 /* PassengerAnnotation.swift in Sources */,
 				848A67B6206B2584006C72D6 /* UIViewExt.swift in Sources */,
 				846F9419207119C40079C5CC /* DriverAnnotation.swift in Sources */,
 				84B8847D2049A12600F37643 /* HomeVC.swift in Sources */,
@@ -374,6 +378,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -381,6 +386,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -431,6 +437,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -438,6 +445,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;

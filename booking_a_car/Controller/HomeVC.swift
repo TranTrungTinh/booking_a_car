@@ -22,6 +22,7 @@ class HomeVC: UIViewController {
     
     var delegate: CenterVCDelegate?
     var maneger: CLLocationManager?
+    var currentUserId = Auth.auth().currentUser?.uid
     var regionRadius: CLLocationDistance = 1000
     var tableView = UITableView()
     var matchingItems: [MKMapItem] = [MKMapItem]()
@@ -147,6 +148,11 @@ extension HomeVC: MKMapViewDelegate {
             view = MKAnnotationView(annotation: annotation, reuseIdentifier: "driver")
             view.image = #imageLiteral(resourceName: "driverAnnotation")
             return view
+        } else if let annotation = annotation as? PassengerAnnotation {
+            var view: MKAnnotationView
+            view = MKAnnotationView(annotation: annotation, reuseIdentifier: "passenger")
+            view.image = #imageLiteral(resourceName: "currentLocationAnnotation")
+            return view
         }
         return nil
     }
@@ -262,6 +268,17 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let passengerCoordinate = maneger?.location?.coordinate
+        
+        let passengerAnnotation = PassengerAnnotation(coordinate: passengerCoordinate!, key: currentUserId!)
+        mapView.addAnnotation(passengerAnnotation)
+        destinationTextField.text = tableView.cellForRow(at: indexPath)?.textLabel?.text
+        
+        let selectedMapItem = matchingItems[indexPath.row]
+        
+        DataService.instance.REF_USERS.child(currentUserId!).updateChildValues(["tripCoordinate":[selectedMapItem.placemark.coordinate.latitude, selectedMapItem.placemark.coordinate.longitude]])
+        
         animateTableView(shouldShow: false)
         print("selected")
     }
