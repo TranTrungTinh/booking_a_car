@@ -26,6 +26,7 @@ class HomeVC: UIViewController {
     var regionRadius: CLLocationDistance = 1000
     var tableView = UITableView()
     var matchingItems: [MKMapItem] = [MKMapItem]()
+    var route: MKRoute!
     var selectedItemPlacemark: MKPlacemark? = nil
     
     let revealingSplashView = RevealingSplashView(iconImage: #imageLiteral(resourceName: "launchScreenIcon"), iconInitialSize: CGSize(width: 80, height: 80), backgroundColor: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1))
@@ -173,6 +174,13 @@ extension HomeVC: MKMapViewDelegate {
         centerBtn.fadeTo(alphaValue: 1.0, withDuration: 0.2)
     }
     
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        let lineRenderer = MKPolylineRenderer(overlay: (self.route.polyline))
+        lineRenderer.strokeColor = UIColor(red: 216/255, green: 71/255, blue: 30/255, alpha: 0.75)
+        lineRenderer.lineWidth = 3
+        return lineRenderer
+    }
+    
     func performSearch() {
         matchingItems.removeAll()
         let request = MKLocalSearchRequest()
@@ -189,6 +197,7 @@ extension HomeVC: MKMapViewDelegate {
                 for mapItem in (response?.mapItems)! {
                     self.matchingItems.append(mapItem as MKMapItem)
                     self.tableView.reloadData()
+                    self.shouldPresentLoadingView(false)
                 }
             }
         }
@@ -206,6 +215,26 @@ extension HomeVC: MKMapViewDelegate {
         annotation.coordinate = placemark.coordinate
         mapView.addAnnotation(annotation)
     }
+
+    func searchMapKitForResultsWithPolyline(forMapItem mapItem: MKMapItem) {
+        let request = MKDirectionsRequest()
+        request.source = MKMapItem.forCurrentLocation()
+        request.destination = mapItem
+        request.transportType = MKDirectionsTransportType.automobile
+        
+        let directions = MKDirections(request: request)
+        
+        directions.calculate { (response, error) in
+            guard let response = response else {
+                print(error.debugDescription)
+                return
+            }
+            self.route = response.routes[0]
+            self.mapView.add(self.route.polyline)
+            self.shouldPresentLoadingView(false)
+        }
+    }
+
 }
 
 extension HomeVC: UITextFieldDelegate {
@@ -234,6 +263,7 @@ extension HomeVC: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == destinationTextField {
             performSearch()
+            shouldPresentLoadingView(true)
             view.endEditing(true)
         }
         return true
@@ -294,6 +324,8 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+        shouldPresentLoadingView(true)
+        
         let passengerCoordinate = maneger?.location?.coordinate
         
         let passengerAnnotation = PassengerAnnotation(coordinate: passengerCoordinate!, key: currentUserId!)
@@ -305,6 +337,7 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
         DataService.instance.REF_USERS.child(currentUserId!).updateChildValues(["tripCoordinate":[selectedMapItem.placemark.coordinate.latitude, selectedMapItem.placemark.coordinate.longitude]])
         
         dropPinFor(placemark: selectedMapItem.placemark)
+        searchMapKitForResultsWithPolyline(forMapItem: selectedMapItem)
         
         animateTableView(shouldShow: false)
         print("selected")

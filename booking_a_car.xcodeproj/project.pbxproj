@@ -28,6 +28,7 @@
 		84B884822049A12600F37643 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84B884812049A12600F37643 /* Assets.xcassets */; };
 		84B884852049A12600F37643 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84B884832049A12600F37643 /* LaunchScreen.storyboard */; };
 		A9B9CF3ACAA828D35A7411EB /* Pods_booking_a_car.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9657579C95664D212B5D2ED9 /* Pods_booking_a_car.framework */; };
+		DE0CE3C4208713D4004DE365 /* UIViewControllerExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE0CE3C3208713D4004DE365 /* UIViewControllerExt.swift */; };
 		DECF6F8220864A03000D2229 /* PassengerAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DECF6F8120864A03000D2229 /* PassengerAnnotation.swift */; };
 /* End PBXBuildFile section */
 
@@ -57,6 +58,7 @@
 		84B884862049A12600F37643 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9657579C95664D212B5D2ED9 /* Pods_booking_a_car.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_booking_a_car.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C27901B21DD2D3EE40F37626 /* Pods-booking_a_car.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-booking_a_car.release.xcconfig"; path = "Pods/Target Support Files/Pods-booking_a_car/Pods-booking_a_car.release.xcconfig"; sourceTree = "<group>"; };
+		DE0CE3C3208713D4004DE365 /* UIViewControllerExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExt.swift; sourceTree = "<group>"; };
 		DECF6F8120864A03000D2229 /* PassengerAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassengerAnnotation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -126,6 +128,7 @@
 			isa = PBXGroup;
 			children = (
 				848A67B5206B2584006C72D6 /* UIViewExt.swift */,
+				DE0CE3C3208713D4004DE365 /* UIViewControllerExt.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -324,6 +327,7 @@
 			files = (
 				8478796A2069EA0A00980610 /* CenterVCDelegate.swift in Sources */,
 				84530719206BDF9800B5488F /* DataService.swift in Sources */,
+				DE0CE3C4208713D4004DE365 /* UIViewControllerExt.swift in Sources */,
 				8498A69620694318002825F9 /* RoundedShadowButton.swift in Sources */,
 				848A67B8206B33D6006C72D6 /* LoginVC.swift in Sources */,
 				847879652069E4B600980610 /* LeftSidePanelVC.swift in Sources */,
