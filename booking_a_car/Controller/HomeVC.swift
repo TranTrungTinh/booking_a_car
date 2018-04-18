@@ -26,7 +26,7 @@ class HomeVC: UIViewController {
     var regionRadius: CLLocationDistance = 1000
     var tableView = UITableView()
     var matchingItems: [MKMapItem] = [MKMapItem]()
-    
+    var selectedItemPlacemark: MKPlacemark? = nil
     
     let revealingSplashView = RevealingSplashView(iconImage: #imageLiteral(resourceName: "launchScreenIcon"), iconInitialSize: CGSize(width: 80, height: 80), backgroundColor: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1))
     
@@ -144,15 +144,27 @@ extension HomeVC: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         if let annotation = annotation as? DriverAnnotation {
+            let identifier = "driver"
             var view: MKAnnotationView
-            view = MKAnnotationView(annotation: annotation, reuseIdentifier: "driver")
+            view = MKAnnotationView(annotation: annotation, reuseIdentifier: identifier)
             view.image = #imageLiteral(resourceName: "driverAnnotation")
             return view
         } else if let annotation = annotation as? PassengerAnnotation {
+            let identifier = "passenger"
             var view: MKAnnotationView
-            view = MKAnnotationView(annotation: annotation, reuseIdentifier: "passenger")
+            view = MKAnnotationView(annotation: annotation, reuseIdentifier: identifier)
             view.image = #imageLiteral(resourceName: "currentLocationAnnotation")
             return view
+        } else if let annotation = annotation as? MKPointAnnotation {
+            let identifier = "destination"
+            var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
+            if annotationView == nil {
+                annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+            } else {
+                annotationView?.annotation = annotation
+            }
+            annotationView?.image = #imageLiteral(resourceName: "destinationAnnotation")
+            return annotationView
         }
         return nil
     }
@@ -180,6 +192,19 @@ extension HomeVC: MKMapViewDelegate {
                 }
             }
         }
+    }
+
+    func dropPinFor(placemark: MKPlacemark) {
+        selectedItemPlacemark = placemark
+        for annotation in mapView.annotations {
+            if annotation.isKind(of: MKPointAnnotation.self) {
+                mapView.removeAnnotation(annotation)
+            }
+        }
+        
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = placemark.coordinate
+        mapView.addAnnotation(annotation)
     }
 }
 
@@ -278,6 +303,8 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
         let selectedMapItem = matchingItems[indexPath.row]
         
         DataService.instance.REF_USERS.child(currentUserId!).updateChildValues(["tripCoordinate":[selectedMapItem.placemark.coordinate.latitude, selectedMapItem.placemark.coordinate.longitude]])
+        
+        dropPinFor(placemark: selectedMapItem.placemark)
         
         animateTableView(shouldShow: false)
         print("selected")
