@@ -29,6 +29,7 @@
 		84B884852049A12600F37643 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84B884832049A12600F37643 /* LaunchScreen.storyboard */; };
 		A9B9CF3ACAA828D35A7411EB /* Pods_booking_a_car.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9657579C95664D212B5D2ED9 /* Pods_booking_a_car.framework */; };
 		DE0CE3C4208713D4004DE365 /* UIViewControllerExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE0CE3C3208713D4004DE365 /* UIViewControllerExt.swift */; };
+		DE7FD729208788EE00DB0CA3 /* Alertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7FD728208788EE00DB0CA3 /* Alertable.swift */; };
 		DECF6F8220864A03000D2229 /* PassengerAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DECF6F8120864A03000D2229 /* PassengerAnnotation.swift */; };
 /* End PBXBuildFile section */
 
@@ -59,6 +60,7 @@
 		9657579C95664D212B5D2ED9 /* Pods_booking_a_car.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_booking_a_car.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C27901B21DD2D3EE40F37626 /* Pods-booking_a_car.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-booking_a_car.release.xcconfig"; path = "Pods/Target Support Files/Pods-booking_a_car/Pods-booking_a_car.release.xcconfig"; sourceTree = "<group>"; };
 		DE0CE3C3208713D4004DE365 /* UIViewControllerExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExt.swift; sourceTree = "<group>"; };
+		DE7FD728208788EE00DB0CA3 /* Alertable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alertable.swift; sourceTree = "<group>"; };
 		DECF6F8120864A03000D2229 /* PassengerAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassengerAnnotation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -120,6 +122,7 @@
 			isa = PBXGroup;
 			children = (
 				847879692069EA0A00980610 /* CenterVCDelegate.swift */,
+				DE7FD728208788EE00DB0CA3 /* Alertable.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -336,6 +339,7 @@
 				DECF6F8220864A03000D2229 /* PassengerAnnotation.swift in Sources */,
 				848A67B6206B2584006C72D6 /* UIViewExt.swift in Sources */,
 				846F9419207119C40079C5CC /* DriverAnnotation.swift in Sources */,
+				DE7FD729208788EE00DB0CA3 /* Alertable.swift in Sources */,
 				84B8847D2049A12600F37643 /* HomeVC.swift in Sources */,
 				846F94172071118E0079C5CC /* UpdateService.swift in Sources */,
 				8498A69020693A77002825F9 /* RoundImageView.swift in Sources */,
