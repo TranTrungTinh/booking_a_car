@@ -175,6 +175,20 @@
                                     <action selector="centerMapBtnWasPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="g0X-hi-tFv"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w9A-90-CQq">
+                                <rect key="frame" x="157" y="601" width="101" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="101" id="Und-Eg-gYF"/>
+                                    <constraint firstAttribute="height" constant="34" id="hvl-vZ-e19"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="16"/>
+                                <state key="normal" title="CANCEL TRIP">
+                                    <color key="titleColor" red="0.92156862745098034" green="0.25098039215686274" blue="0.14509803921568629" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="cancelBtnWasPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="VKC-k1-jqp"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -196,7 +210,9 @@
                             <constraint firstItem="92W-yw-c5U" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="dfU-qB-Csc"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="au4-qA-UVt" secondAttribute="trailing" constant="16" id="dqY-CI-RzH"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="FdX-TM-xSw" secondAttribute="trailing" constant="16" id="gdg-Ux-EFC"/>
+                            <constraint firstItem="2TC-pg-adp" firstAttribute="top" secondItem="w9A-90-CQq" secondAttribute="bottom" constant="21" id="geZ-eV-kNw"/>
                             <constraint firstItem="FdX-TM-xSw" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="10" id="jht-sj-le7"/>
+                            <constraint firstItem="w9A-90-CQq" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="nMp-9j-cKL"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="HS5-Bx-U77" secondAttribute="trailing" constant="16" id="sf7-Vc-9xP"/>
                             <constraint firstItem="zUi-ri-81X" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="xiH-vm-IpX"/>
                         </constraints>
@@ -204,6 +220,7 @@
                     </view>
                     <connections>
                         <outlet property="actionBtn" destination="aCw-dN-Wxz" id="Yzr-IW-wIE"/>
+                        <outlet property="cancelBtn" destination="w9A-90-CQq" id="ftA-RC-bdR"/>
                         <outlet property="centerBtn" destination="HS5-Bx-U77" id="ez0-Oy-AB8"/>
                         <outlet property="destinationCircle" destination="jO4-a2-QVG" id="FmZ-Qb-Igl"/>
                         <outlet property="destinationTextField" destination="Vev-RI-BpJ" id="Mlq-th-J7d"/>

@@ -71,5 +71,19 @@ class UpdateService {
             }
         })
     }
+    
+    func acceptTrip(withPassengerKey passengerKey: String, forDriverKey driverKey: String) {
+        DataService.instance.REF_TRIPS.child(passengerKey).updateChildValues(["driverKey": driverKey, "tripIsAccepted": true])
+        DataService.instance.REF_DRIVERS.child(driverKey).updateChildValues(["driverIsOnTrip": true])
+    }
+    
+    func cancelTrip(withPassengerKey passengerKey: String, forDriverKey driverKey: String?) {
+        DataService.instance.REF_TRIPS.child(passengerKey).removeValue()
+        DataService.instance.REF_USERS.child(passengerKey).child("tripCoordinate").removeValue()
+        if driverKey != nil {
+            DataService.instance.REF_DRIVERS.child(driverKey!).updateChildValues(["driverIsOnTrip": false])
+        }
+    }
+    
 }
 
