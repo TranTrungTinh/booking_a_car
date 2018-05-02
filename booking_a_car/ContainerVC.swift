@@ -13,6 +13,7 @@ enum SlideOutState {
     case collapsed
     case leftPanelExpanded
 }
+
 enum ShowWhichVC {
     case homeVC
 }
@@ -20,18 +21,19 @@ enum ShowWhichVC {
 var showVC: ShowWhichVC = .homeVC
 
 class ContainerVC: UIViewController {
-
+    
     var homeVC: HomeVC!
     var leftVC: LeftSidePanelVC!
     var centerController: UIViewController!
     var currentState: SlideOutState = .collapsed {
         didSet {
             let shouldShowShadow = (currentState != .collapsed)
+            
             shouldShowShadowForCenterViewController(status: shouldShowShadow)
         }
     }
     
-    var isHiddend = false
+    var isHidden = false
     let centerPanelExpandedOffset: CGFloat = 160
     
     var tap: UITapGestureRecognizer!
@@ -43,18 +45,23 @@ class ContainerVC: UIViewController {
     
     func initCenter(screen: ShowWhichVC) {
         var presentingController: UIViewController
+        
         showVC = screen
+        
         if homeVC == nil {
             homeVC = UIStoryboard.homeVC()
             homeVC.delegate = self
         }
         
         presentingController = homeVC
+        
         if let con = centerController {
             con.view.removeFromSuperview()
             con.removeFromParentViewController()
         }
+        
         centerController = presentingController
+        
         view.addSubview(centerController.view)
         addChildViewController(centerController)
         centerController.didMove(toParentViewController: self)
@@ -65,12 +72,14 @@ class ContainerVC: UIViewController {
     }
     
     override var prefersStatusBarHidden: Bool {
-        return isHiddend
+        return isHidden
     }
 }
+
 extension ContainerVC: CenterVCDelegate {
     func toggleLeftPanel() {
         let notAlreadyExpanded = (currentState != .leftPanelExpanded)
+        
         if notAlreadyExpanded {
             addLeftPanelViewController()
         }
@@ -92,7 +101,7 @@ extension ContainerVC: CenterVCDelegate {
     
     @objc func animateLeftPanel(shouldExpand: Bool) {
         if shouldExpand {
-            isHiddend = !isHiddend
+            isHidden = !isHidden
             animateStatusBar()
             
             setupWhiteCoverView()
@@ -100,12 +109,12 @@ extension ContainerVC: CenterVCDelegate {
             
             animateCenterPanelXPosition(targetPosition: centerController.view.frame.width - centerPanelExpandedOffset)
         } else {
-            isHiddend = !isHiddend
+            isHidden = !isHidden
             animateStatusBar()
             
             hideWhiteCoverView()
             animateCenterPanelXPosition(targetPosition: 0, completion: { (finished) in
-                if finished {
+                if finished == true {
                     self.currentState = .collapsed
                     self.leftVC = nil
                 }
@@ -114,15 +123,9 @@ extension ContainerVC: CenterVCDelegate {
     }
     
     func animateCenterPanelXPosition(targetPosition: CGFloat, completion: ((Bool) -> Void)! = nil) {
-        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseInOut, animations: { 
             self.centerController.view.frame.origin.x = targetPosition
         }, completion: completion)
-    }
-    
-    func animateStatusBar() {
-        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
-            self.setNeedsStatusBarAppearanceUpdate()
-        })
     }
     
     func setupWhiteCoverView() {
@@ -136,13 +139,15 @@ extension ContainerVC: CenterVCDelegate {
         
         tap = UITapGestureRecognizer(target: self, action: #selector(animateLeftPanel(shouldExpand:)))
         tap.numberOfTapsRequired = 1
+        
         self.centerController.view.addGestureRecognizer(tap)
     }
+    
     func hideWhiteCoverView() {
         centerController.view.removeGestureRecognizer(tap)
         for subview in self.centerController.view.subviews {
             if subview.tag == 25 {
-                UIView.animate(withDuration: 0.2, animations: {
+                UIView.animate(withDuration: 0.2, animations: { 
                     subview.alpha = 0.0
                 }, completion: { (finished) in
                     subview.removeFromSuperview()
@@ -152,29 +157,30 @@ extension ContainerVC: CenterVCDelegate {
     }
     
     func shouldShowShadowForCenterViewController(status: Bool) {
-        if status {
+        if status == true {
             centerController.view.layer.shadowOpacity = 0.6
         } else {
             centerController.view.layer.shadowOpacity = 0.0
         }
     }
+    
+    func animateStatusBar() {
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseInOut, animations: { 
+            self.setNeedsStatusBarAppearanceUpdate()
+        })
+    }
 }
 
 private extension UIStoryboard {
     class func mainStoryboard() -> UIStoryboard {
-        return UIStoryboard(name: "Main", bundle: Bundle.main)
+        return UIStoryboard(name: MAIN_STORYBOARD, bundle: Bundle.main)
     }
     
     class func leftViewController() -> LeftSidePanelVC? {
-        return mainStoryboard().instantiateViewController(withIdentifier: "LeftSidePanelVC") as? LeftSidePanelVC
+        return mainStoryboard().instantiateViewController(withIdentifier: VC_LEFT_PANEL) as? LeftSidePanelVC
     }
     
     class func homeVC() -> HomeVC? {
-        return mainStoryboard().instantiateViewController(withIdentifier: "HomeVC") as? HomeVC
+        return mainStoryboard().instantiateViewController(withIdentifier: VC_HOME) as? HomeVC
     }
-    
 }
-
-
-
-

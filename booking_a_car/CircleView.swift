@@ -10,7 +10,7 @@ import UIKit
 
 class CircleView: UIView {
 
-    @IBInspectable var boderColor: UIColor? {
+    @IBInspectable var borderColor: UIColor? {
         didSet {
             setupView()
         }
@@ -23,7 +23,7 @@ class CircleView: UIView {
     func setupView() {
         self.layer.cornerRadius = self.frame.width / 2
         self.layer.borderWidth = 1.5
-        self.layer.borderColor = boderColor?.cgColor
+        self.layer.borderColor = borderColor?.cgColor
     }
 
 }

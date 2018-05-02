@@ -1,25 +1,22 @@
 //
-//  RoundMapView.swift
+//  RoundImageView.swift
 //  booking_a_car
 //
-//  Created by Tran Trung Tinh on 4/24/18.
+//  Created by admin on 3/26/18.
 //  Copyright © 2018 Trung Tinh. All rights reserved.
 //
 
 import UIKit
-import MapKit
 
-class RoundMapView: MKMapView {
-
+class RoundImageView: UIImageView {
+    
     override func awakeFromNib() {
         setupView()
     }
-    
+
     func setupView() {
         self.layer.cornerRadius = self.frame.width / 2
-        self.layer.borderColor = UIColor.white.cgColor
-        self.layer.borderWidth = 10.0
+        self.clipsToBounds = true
     }
-    
 
 }

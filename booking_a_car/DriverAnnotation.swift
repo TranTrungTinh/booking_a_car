@@ -9,7 +9,6 @@
 import Foundation
 import MapKit
 
-
 class DriverAnnotation: NSObject, MKAnnotation {
     dynamic var coordinate: CLLocationCoordinate2D
     var key: String
@@ -24,9 +23,8 @@ class DriverAnnotation: NSObject, MKAnnotation {
         var location = self.coordinate
         location.latitude = coordinate.latitude
         location.longitude = coordinate.longitude
-        UIView.animate(withDuration: 0.2) {
+        UIView.animate(withDuration: 0.2) { 
             self.coordinate = location
         }
     }
-    
 }

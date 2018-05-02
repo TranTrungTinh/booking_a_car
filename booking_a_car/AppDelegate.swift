@@ -13,9 +13,9 @@ import Firebase
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    
-    fileprivate var containerVC = ContainerVC()
 
+    fileprivate var containerVC = ContainerVC()
+    
     var MenuContainerVC: ContainerVC {
         return containerVC
     }
@@ -23,8 +23,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     override init() {
         FirebaseApp.configure()
     }
-    
+
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        
         containerVC = ContainerVC()
         
         window?.rootViewController = containerVC
@@ -58,6 +59,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     class func getAppDelegate() -> AppDelegate {
         return UIApplication.shared.delegate as! AppDelegate
     }
+
 
 }
 

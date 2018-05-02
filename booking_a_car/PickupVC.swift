@@ -12,7 +12,7 @@ import Firebase
 
 class PickupVC: UIViewController {
 
-    @IBOutlet weak var pickupMapView: MKMapView!
+    @IBOutlet weak var pickupMapView: RoundMapView!
     
     var pickupCoordinate: CLLocationCoordinate2D!
     var passengerKey: String!
@@ -20,40 +20,40 @@ class PickupVC: UIViewController {
     var regionRadius: CLLocationDistance = 2000
     var pin: MKPlacemark? = nil
     
-    var localtionPlacemark: MKPlacemark!
+    var locationPlacemark: MKPlacemark!
+    
     var currentUserId = Auth.auth().currentUser?.uid
     
     override func viewDidLoad() {
         super.viewDidLoad()
         pickupMapView.delegate = self
         
-        localtionPlacemark = MKPlacemark(coordinate: pickupCoordinate)
-        dropPinFor(placemark: localtionPlacemark)
-        centerMapOnLocation(location: localtionPlacemark.location!)
+        locationPlacemark = MKPlacemark(coordinate: pickupCoordinate)
+        
+        dropPinFor(placemark: locationPlacemark)
+        centerMapOnLocation(location: locationPlacemark.location!)
         
         DataService.instance.REF_TRIPS.child(passengerKey).observe(.value, with: { (tripSnapshot) in
             if tripSnapshot.exists() {
-                if tripSnapshot.childSnapshot(forPath: "tripIsAccepted").value as? Bool == true {
+                if tripSnapshot.childSnapshot(forPath: TRIP_IS_ACCEPTED).value as? Bool == true {
                     self.dismiss(animated: true, completion: nil)
                 }
             } else {
                 self.dismiss(animated: true, completion: nil)
             }
         })
-        
     }
-
+    
     func initData(coordinate: CLLocationCoordinate2D, passengerKey: String) {
         self.pickupCoordinate = coordinate
         self.passengerKey = passengerKey
     }
     
-    @IBAction func acceptTripWasPressed(_ sender: Any) {
+    @IBAction func acceptTripBtnWasPressed(_ sender: Any) {
         UpdateService.instance.acceptTrip(withPassengerKey: passengerKey, forDriverKey: currentUserId!)
         presentingViewController?.shouldPresentLoadingView(true)
     }
-    
-    
+
     @IBAction func cancelBtnWasPressed(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
@@ -69,7 +69,8 @@ extension PickupVC: MKMapViewDelegate {
         } else {
             annotationView?.annotation = annotation
         }
-        annotationView?.image = #imageLiteral(resourceName: "destinationAnnotation")
+        annotationView?.image = UIImage(named: "destinationAnnotation")
+        
         return annotationView
     }
     
@@ -80,12 +81,14 @@ extension PickupVC: MKMapViewDelegate {
     
     func dropPinFor(placemark: MKPlacemark) {
         pin = placemark
+        
         for annotation in pickupMapView.annotations {
             pickupMapView.removeAnnotation(annotation)
         }
         
         let annotation = MKPointAnnotation()
         annotation.coordinate = placemark.coordinate
+        
         pickupMapView.addAnnotation(annotation)
     }
 }

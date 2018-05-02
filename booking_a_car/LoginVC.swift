@@ -2,7 +2,7 @@
 //  LoginVC.swift
 //  booking_a_car
 //
-//  Created by admin on 3/28/18.
+//  Created by admin on 4/26/18.
 //  Copyright © 2018 Trung Tinh. All rights reserved.
 //
 
@@ -11,17 +11,15 @@ import Firebase
 
 class LoginVC: UIViewController, UITextFieldDelegate, Alertable {
 
-    @IBOutlet weak var emailTextfield: RoundedCornerTextField!
+    @IBOutlet weak var emailField: RoundedCornerTextField!
     @IBOutlet weak var passwordField: RoundedCornerTextField!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var authBtn: RoundedShadowButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        emailTextfield.delegate = self
+        emailField.delegate = self
         passwordField.delegate = self
-        
         view.bindtoKeyboard()
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleScreenTap(sender:)))
@@ -35,13 +33,13 @@ class LoginVC: UIViewController, UITextFieldDelegate, Alertable {
     @IBAction func cancelBtnWasPressed(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
-    
+
     @IBAction func authBtnWasPressed(_ sender: Any) {
-        if emailTextfield.text != nil && passwordField.text != nil {
+        if emailField.text != nil && passwordField.text != nil {
             authBtn.animateButton(shouldLoad: true, withMessage: nil)
             self.view.endEditing(true)
             
-            if let email = emailTextfield.text, let password = passwordField.text {
+            if let email = emailField.text, let password = passwordField.text {
                 Auth.auth().signIn(withEmail: email, password: password, completion: { (user, error) in
                     if error == nil {
                         if let user = user {
@@ -49,17 +47,18 @@ class LoginVC: UIViewController, UITextFieldDelegate, Alertable {
                                 let userData = ["provider": user.providerID] as [String: Any]
                                 DataService.instance.createFirebaseDBUser(uid: user.uid, userData: userData, isDriver: false)
                             } else {
-                                let userData = ["provider": user.providerID, "userIsDriver": true, "isPickupModeEnable": false, "driverIsOnTrip": false] as [String: Any]
+                                let userData = ["provider": user.providerID, USER_IS_DRIVER: true, ACCOUNT_PICKUP_MODE_ENABLED: false, DRIVER_IS_ON_TRIP: false] as [String: Any]
                                 DataService.instance.createFirebaseDBUser(uid: user.uid, userData: userData, isDriver: true)
                             }
                         }
-                        print("Email user anthenticated successfully with Firebase")
                         self.dismiss(animated: true, completion: nil)
                     } else {
                         if let errorCode = AuthErrorCode(rawValue: error!._code) {
                             switch errorCode {
-                            case .wrongPassword: self.showAlert("That was wrong password!!! Please try again.")
-                            default: self.showAlert("An unexpected error occurred. Please try again.")
+                            case .wrongPassword:
+                                self.showAlert(ERROR_MSG_WRONG_PASSWORD)
+                            default:
+                                self.showAlert(ERROR_MSG_UNEXPECTED_ERROR)
                             }
                         }
                         
@@ -67,21 +66,22 @@ class LoginVC: UIViewController, UITextFieldDelegate, Alertable {
                             if error != nil {
                                 if let errorCode = AuthErrorCode(rawValue: error!._code) {
                                     switch errorCode {
-                                    case .invalidEmail: self.showAlert("Email invalid. Please try again.")
-                                    default: self.showAlert("An unexpected error occurred. Please try again.")
+                                    case .invalidEmail:
+                                        self.showAlert(ERROR_MSG_INVALID_EMAIL)
+                                    default:
+                                        self.showAlert(ERROR_MSG_UNEXPECTED_ERROR)
                                     }
                                 }
                             } else {
                                 if let user = user {
                                     if self.segmentedControl.selectedSegmentIndex == 0 {
-                                        let userData = ["provider": user.providerID] as [String:Any]
+                                        let userData = ["provider": user.providerID] as [String: Any]
                                         DataService.instance.createFirebaseDBUser(uid: user.uid, userData: userData, isDriver: false)
                                     } else {
-                                        let userData = ["provider": user.providerID, "userIsDriver": true, "isPickupModeEnable": false, "driverIsOnTrip": false] as [String: Any]
+                                        let userData = ["provider": user.providerID, USER_IS_DRIVER: true, ACCOUNT_PICKUP_MODE_ENABLED: false, DRIVER_IS_ON_TRIP: false] as [String: Any]
                                         DataService.instance.createFirebaseDBUser(uid: user.uid, userData: userData, isDriver: true)
                                     }
                                 }
-                                print("Successfully created a new user with Firebase")
                                 self.dismiss(animated: true, completion: nil)
                             }
                         })
@@ -90,7 +90,4 @@ class LoginVC: UIViewController, UITextFieldDelegate, Alertable {
             }
         }
     }
-    
-    
-
 }

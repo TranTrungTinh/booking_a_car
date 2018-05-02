@@ -9,10 +9,11 @@
 import UIKit
 
 class RoundedShadowView: UIView {
-
+    
     override func awakeFromNib() {
         setupView()
     }
+
     func setupView() {
         self.layer.cornerRadius = 5.0
         self.layer.shadowOpacity = 0.3
