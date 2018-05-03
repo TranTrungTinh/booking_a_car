@@ -1,9 +1,9 @@
 # ĐỒ ÁN CUỐI KỲ MÔN CÔNG NGHỆ PHẦN MỀM: App đặt xe #
 
 ### Getting Started ###
-Project using Xcode 9.3 swift 4 + FireBase
+Project using Xcode 9.3 - Swift 4 + FireBase
 
-### Prerequisities ###
+### Install ###
 
 If CocoaPods is not installed on your local machine:
 
@@ -15,6 +15,6 @@ This will install cocoapods on your system. Once that is done, do:
 
 To install the required dependencies for building the project.
 
-### Run Project ###
+### Build & Run ###
 
 Simply connect your device, chose it in the device list in Xcode and click on Run.
