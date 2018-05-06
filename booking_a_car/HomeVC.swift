@@ -34,6 +34,8 @@ class HomeVC: UIViewController, Alertable {
     @IBOutlet weak var destinationTextField: UITextField!
     @IBOutlet weak var destinationCircle: CircleView!
     @IBOutlet weak var cancelBtn: UIButton!
+    @IBOutlet weak var priceView: UIView!
+    @IBOutlet weak var priceTag: UILabel!
     
     var delegate: CenterVCDelegate?
     
@@ -80,6 +82,7 @@ class HomeVC: UIViewController, Alertable {
         })
         
         cancelBtn.alpha = 0.0
+        priceView.alpha = 0.0
         
         self.view.addSubview(revealingSplashView)
         revealingSplashView.animationType = SplashAnimationType.heartBeat
@@ -350,14 +353,16 @@ class HomeVC: UIViewController, Alertable {
                 
                 self.view.endEditing(true)
                 destinationTextField.isUserInteractionEnabled = false
+                self.priceView.fadeTo(alphaValue: 0.0, withDuration: 0.2)
             }
         case .getDirectionsToPassenger:
             DataService.instance.driverIsOnTrip(driverKey: currentUserId!, handler: { (isOnTrip, driverKey, tripKey) in
                 if isOnTrip == true {
                     DataService.instance.REF_TRIPS.child(tripKey!).observe(.value, with: { (tripSnapshot) in
-                        let tripDict = tripSnapshot.value as? Dictionary<String, AnyObject>
+                        guard let tripDict = tripSnapshot.value as? Dictionary<String, AnyObject> else {return}
                         
-                        let pickupCoordinateArray = tripDict?[USER_PICKUP_COORDINATE] as! NSArray
+                        let pickupCoordinateArray = tripDict[USER_PICKUP_COORDINATE] as! NSArray
+                        
                         let pickupCoordinate = CLLocationCoordinate2D(latitude: pickupCoordinateArray[0] as! CLLocationDegrees, longitude: pickupCoordinateArray[1] as! CLLocationDegrees)
                         let pickupMapItem = MKMapItem(placemark: MKPlacemark(coordinate: pickupCoordinate))
                         
@@ -366,6 +371,7 @@ class HomeVC: UIViewController, Alertable {
                     })
                 }
             })
+            
         case .startTrip:
             DataService.instance.driverIsOnTrip(driverKey: self.currentUserId!, handler: { (isOnTrip, driverKey, tripKey) in
                 if isOnTrip == true {
@@ -555,6 +561,29 @@ extension HomeVC: MKMapViewDelegate {
         let annotation = MKPointAnnotation()
         annotation.coordinate = placemark.coordinate
         mapView.addAnnotation(annotation)
+    }
+    
+    func getPrice(destinationMapItem: MKMapItem) {
+        let request = MKDirectionsRequest()
+        request.source = MKMapItem.forCurrentLocation()
+        request.destination = destinationMapItem
+        request.transportType = MKDirectionsTransportType.automobile
+        request.requestsAlternateRoutes = true
+        
+        let directions = MKDirections(request: request)
+        
+        directions.calculate { (response, error) in
+            guard let response = response else {
+                self.showAlert(error.debugDescription)
+                return
+            }
+            var distance = response.routes[0].distance
+            
+            distance = (distance / 1000).rounded(.up)
+            
+            self.priceTag.text = "\(Int(distance) * 4)K"
+            self.priceView.fadeTo(alphaValue: 1.0, withDuration: 0.3)
+        }
     }
     
     func searchMapKitForResultsWithPolyline(forOriginMapItem originMapItem: MKMapItem?, withDestinationMapItem destinationMapItem: MKMapItem) {
@@ -783,6 +812,8 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
         dropPinFor(placemark: selectedMapItem.placemark)
         
         searchMapKitForResultsWithPolyline(forOriginMapItem: nil, withDestinationMapItem: selectedMapItem)
+        
+        self.getPrice(destinationMapItem: selectedMapItem)
         
         animateTableView(shouldShow: false)
     }
