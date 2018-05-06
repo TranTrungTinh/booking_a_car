@@ -825,6 +825,7 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         if destinationTextField.text == "" {
             animateTableView(shouldShow: false)
+            self.priceView.fadeTo(alphaValue: 0.0, withDuration: 0.2)
         }
     }
 }
