@@ -33,6 +33,7 @@
 		71F5192A1EB1FB4F000932E6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71F519281EB1FB4F000932E6 /* Main.storyboard */; };
 		71F5192C1EB1FB4F000932E6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71F5192B1EB1FB4F000932E6 /* Assets.xcassets */; };
 		71F5192F1EB1FB4F000932E6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71F5192D1EB1FB4F000932E6 /* LaunchScreen.storyboard */; };
+		DEB7290620A5F2F400C653B9 /* PaymentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEB7290520A5F2F400C653B9 /* PaymentVC.swift */; };
 		F73A2CB3714E3765F41C7970 /* Pods_booking_a_car.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 646E91FBCADA20AB19EA24CA /* Pods_booking_a_car.framework */; };
 /* End PBXBuildFile section */
 
@@ -71,6 +72,7 @@
 		71F519301EB1FB4F000932E6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BD51F68F98DA5241C1A0DF01 /* Pods_htchhkr_development.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_htchhkr_development.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDE56E3D4A27A4C4D17B459C /* Pods-htchhkr-development.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-htchhkr-development.debug.xcconfig"; path = "Pods/Target Support Files/Pods-htchhkr-development/Pods-htchhkr-development.debug.xcconfig"; sourceTree = "<group>"; };
+		DEB7290520A5F2F400C653B9 /* PaymentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +95,7 @@
 				71289DD81EB42EE800FD1AAB /* ContainerVC.swift */,
 				71289DE91EB4759100FD1AAB /* LoginVC.swift */,
 				719DA0511EB73728007DB157 /* PickupVC.swift */,
+				DEB7290520A5F2F400C653B9 /* PaymentVC.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -353,6 +356,7 @@
 				719DA0481EB58A71007DB157 /* UpdateService.swift in Sources */,
 				719DA0521EB73728007DB157 /* PickupVC.swift in Sources */,
 				719DA0541EB737D9007DB157 /* RoundMapView.swift in Sources */,
+				DEB7290620A5F2F400C653B9 /* PaymentVC.swift in Sources */,
 				71289DCD1EB40F1F00FD1AAB /* RoundImageView.swift in Sources */,
 				71289DEA1EB4759100FD1AAB /* LoginVC.swift in Sources */,
 				71289DCF1EB4102800FD1AAB /* RoundedShadowView.swift in Sources */,

@@ -1,9 +1,9 @@
 //
 //  Constants.swift
-//  htchhkr-development
+//  booking_a_car
 //
-//  Created by Caleb Stultz on 5/8/17.
-//  Copyright © 2017 Caleb Stultz. All rights reserved.
+//  Created by Tran Trung Tinh on 28/4/18.
+//  Copyright © 2017 MacOS. All rights reserved.
 //
 
 import Foundation
@@ -49,7 +49,7 @@ let VC_LEFT_PANEL = "LeftSidePanelVC"
 let VC_HOME = "HomeVC"
 let VC_LOGIN = "LoginVC"
 let VC_PICKUP = "PickupVC"
-
+let VC_PAYMENT = "PaymentVC"
 // TableViewCells
 let CELL_LOCATION = "locationCell"
 

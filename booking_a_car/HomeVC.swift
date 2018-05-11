@@ -753,7 +753,7 @@ extension HomeVC: UITextFieldDelegate {
                 mapView.removeAnnotation(annotation)
             }
         }
-        
+        priceView.fadeTo(alphaValue: 0.0, withDuration: 0.2)
         centerMapOnUserLocation()
         return true
     }
@@ -797,7 +797,17 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         shouldPresentLoadingView(true)
+        //before add, remove all annotation
+        mapView.removeOverlays(mapView.overlays)
+        for annotation in mapView.annotations {
+            if let annotation = annotation as? MKPointAnnotation {
+                mapView.removeAnnotation(annotation)
+            } else if annotation.isKind(of: PassengerAnnotation.self) {
+                mapView.removeAnnotation(annotation)
+            }
+        }
         
+        //after remove, add annotation
         let passengerCoordinate = manager?.location?.coordinate
         
         let passengerAnnotation = PassengerAnnotation(coordinate: passengerCoordinate!, key: currentUserId!)
@@ -825,7 +835,7 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         if destinationTextField.text == "" {
             animateTableView(shouldShow: false)
-            self.priceView.fadeTo(alphaValue: 0.0, withDuration: 0.2)
+//            self.priceView.fadeTo(alphaValue: 0.0, withDuration: 0.2)
         }
     }
 }

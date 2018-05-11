@@ -106,4 +106,11 @@ class LeftSidePanelVC: UIViewController {
             }
         }
     }
+    @IBAction func paymentBtnWasPressed(_ sender: Any) {
+        let storyboard = UIStoryboard(name: MAIN_STORYBOARD, bundle: Bundle.main)
+        let paymentVC = storyboard.instantiateViewController(withIdentifier: VC_PAYMENT) as? PaymentVC
+        present(paymentVC!, animated: true, completion: nil)
+    }
+    
+    
 }
