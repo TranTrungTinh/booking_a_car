@@ -728,17 +728,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="veC-Fm-FVe" customClass="RoundedShadowView" customModule="booking_a_car" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="182" width="414" height="60"/>
+                                <rect key="frame" x="0.0" y="192" width="414" height="60"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cash" translatesAutoresizingMaskIntoConstraints="NO" id="rGL-uE-pe5">
-                                        <rect key="frame" x="30" y="20" width="30" height="20"/>
+                                        <rect key="frame" x="20" y="20" width="30" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="LaR-QL-hQj"/>
                                             <constraint firstAttribute="width" constant="30" id="Zv5-JM-daY"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cash" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V6U-2d-Ft7">
-                                        <rect key="frame" x="85" y="19" width="37" height="22"/>
+                                        <rect key="frame" x="75" y="19" width="37" height="22"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="22" id="SVP-qY-VS7"/>
                                             <constraint firstAttribute="width" constant="37" id="zKN-Oo-qxl"/>
@@ -754,11 +754,11 @@
                                     <constraint firstItem="V6U-2d-Ft7" firstAttribute="leading" secondItem="rGL-uE-pe5" secondAttribute="trailing" constant="25" id="Vow-4T-cun"/>
                                     <constraint firstAttribute="height" constant="60" id="eVw-3U-P1J"/>
                                     <constraint firstItem="V6U-2d-Ft7" firstAttribute="centerY" secondItem="rGL-uE-pe5" secondAttribute="centerY" id="gXP-fW-WvV"/>
-                                    <constraint firstItem="rGL-uE-pe5" firstAttribute="leading" secondItem="veC-Fm-FVe" secondAttribute="leading" constant="30" id="zPj-nX-xj8"/>
+                                    <constraint firstItem="rGL-uE-pe5" firstAttribute="leading" secondItem="veC-Fm-FVe" secondAttribute="leading" constant="20" id="zPj-nX-xj8"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Payment Methods" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OLM-wr-USo">
-                                <rect key="frame" x="20" y="150" width="133" height="22"/>
+                                <rect key="frame" x="20" y="160" width="133" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="22" id="Bis-gz-tcn"/>
                                     <constraint firstAttribute="width" constant="133" id="DRW-pD-AK2"/>
@@ -768,10 +768,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YHh-Ef-Nk1">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="110"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="120"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vd4-XM-IhD">
-                                        <rect key="frame" x="15" y="16" width="30" height="30"/>
+                                        <rect key="frame" x="15" y="26" width="30" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="30" id="0UD-dS-4ru"/>
                                             <constraint firstAttribute="height" constant="30" id="8UM-QT-AjT"/>
@@ -782,7 +782,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Payment" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BBt-ub-Hwk">
-                                        <rect key="frame" x="15" y="56" width="127" height="44"/>
+                                        <rect key="frame" x="15" y="66" width="127" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="127" id="M9c-qo-coG"/>
                                             <constraint firstAttribute="height" constant="44" id="XQQ-Y8-ak7"/>
@@ -794,13 +794,22 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="vd4-XM-IhD" firstAttribute="top" secondItem="YHh-Ef-Nk1" secondAttribute="top" constant="16" id="KcD-lH-M5R"/>
-                                    <constraint firstAttribute="height" constant="110" id="Onx-Uy-cIy"/>
+                                    <constraint firstItem="vd4-XM-IhD" firstAttribute="top" secondItem="YHh-Ef-Nk1" secondAttribute="top" constant="26" id="KcD-lH-M5R"/>
+                                    <constraint firstAttribute="height" constant="120" id="Onx-Uy-cIy"/>
                                     <constraint firstItem="BBt-ub-Hwk" firstAttribute="top" secondItem="vd4-XM-IhD" secondAttribute="bottom" constant="10" id="SIe-07-pRA"/>
                                     <constraint firstItem="BBt-ub-Hwk" firstAttribute="leading" secondItem="vd4-XM-IhD" secondAttribute="leading" id="kYd-X4-l4M"/>
                                     <constraint firstItem="vd4-XM-IhD" firstAttribute="leading" secondItem="YHh-Ef-Nk1" secondAttribute="leading" constant="15" id="vut-oy-XpM"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SqO-mj-n1c">
+                                <rect key="frame" x="20" y="260" width="150" height="33"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="33m-be-0B1"/>
+                                    <constraint firstAttribute="height" constant="33" id="OIh-7w-GAC"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="15"/>
+                                <state key="normal" title="Add Payment Method"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.96311865482233505" green="0.96311865482233505" blue="0.96311865482233505" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
@@ -812,6 +821,8 @@
                             <constraint firstAttribute="trailing" secondItem="veC-Fm-FVe" secondAttribute="trailing" id="WqM-vb-qf2"/>
                             <constraint firstItem="OLM-wr-USo" firstAttribute="leading" secondItem="pkl-z8-fDg" secondAttribute="leadingMargin" id="ddC-Tq-4Vq"/>
                             <constraint firstItem="OLM-wr-USo" firstAttribute="top" secondItem="YHh-Ef-Nk1" secondAttribute="bottom" constant="40" id="g4c-pL-JQo"/>
+                            <constraint firstItem="SqO-mj-n1c" firstAttribute="top" secondItem="veC-Fm-FVe" secondAttribute="bottom" constant="8" id="gse-6H-EoP"/>
+                            <constraint firstItem="SqO-mj-n1c" firstAttribute="leading" secondItem="pkl-z8-fDg" secondAttribute="leadingMargin" id="yHq-do-Nuu"/>
                         </constraints>
                     </view>
                 </viewController>
