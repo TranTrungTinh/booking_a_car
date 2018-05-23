@@ -83,6 +83,7 @@ class HomeVC: UIViewController, Alertable {
         
         cancelBtn.alpha = 0.0
         priceView.alpha = 0.0
+        actionBtn.alpha = 0.0
         
         self.view.addSubview(revealingSplashView)
         revealingSplashView.animationType = SplashAnimationType.heartBeat
@@ -190,11 +191,11 @@ class HomeVC: UIViewController, Alertable {
             self.cancelBtn.isHidden = true
             self.centerMapBtn.isHidden = true
         } else {
-            self.actionBtn.fadeTo(alphaValue: 1.0, withDuration: 0.2)
-            self.cancelBtn.fadeTo(alphaValue: 1.0, withDuration: 0.2)
+//            self.actionBtn.fadeTo(alphaValue: 1.0, withDuration: 0.2)
+//            self.cancelBtn.fadeTo(alphaValue: 1.0, withDuration: 0.2)
             self.centerMapBtn.fadeTo(alphaValue: 1.0, withDuration: 0.2)
-            self.actionBtn.isHidden = false
-            self.cancelBtn.isHidden = false
+            self.actionBtn.isHidden = true
+//            self.cancelBtn.isHidden = false
             self.centerMapBtn.isHidden = false
         }
     }
@@ -251,10 +252,10 @@ class HomeVC: UIViewController, Alertable {
                 self.removeOverlaysAndAnnotations(forDrivers: false, forPassengers: true)
                 
                  DataService.instance.REF_TRIPS.child(tripKey!).observeSingleEvent(of: .value, with: { (tripSnapshot) in
-                    let tripDict = tripSnapshot.value as? Dictionary<String, AnyObject>
-                    let driverId = tripDict?[DRIVER_KEY] as! String
+                    guard let tripDict = tripSnapshot.value as? Dictionary<String, AnyObject> else {return}
+                    let driverId = tripDict[DRIVER_KEY] as! String
                     
-                    let pickupCoordinateArray = tripDict?[USER_PICKUP_COORDINATE] as! NSArray
+                    let pickupCoordinateArray = tripDict[USER_PICKUP_COORDINATE] as! NSArray
                     let pickupCoordinate = CLLocationCoordinate2D(latitude: pickupCoordinateArray[0] as! CLLocationDegrees, longitude: pickupCoordinateArray[1] as! CLLocationDegrees)
                     let pickupPlacemark = MKPlacemark(coordinate: pickupCoordinate)
                     let pickupMapItem = MKMapItem(placemark: pickupPlacemark)
@@ -274,10 +275,10 @@ class HomeVC: UIViewController, Alertable {
                     })
                     
                     DataService.instance.REF_TRIPS.child(tripKey!).observeSingleEvent(of: .value, with: { (tripSnapshot) in
-                        if tripDict?[TRIP_IN_PROGRESS] as? Bool == true {
+                        if tripDict[TRIP_IN_PROGRESS] as? Bool == true {
                             self.removeOverlaysAndAnnotations(forDrivers: true, forPassengers: true)
                             
-                            let destinationCoordinateArray = tripDict?[USER_DESTINATION_COORDINATE] as! NSArray
+                            let destinationCoordinateArray = tripDict[USER_DESTINATION_COORDINATE] as! NSArray
                             let destinationCoordinate = CLLocationCoordinate2D(latitude: destinationCoordinateArray[0] as! CLLocationDegrees, longitude: destinationCoordinateArray[1] as! CLLocationDegrees)
                             let destinationPlacemark = MKPlacemark(coordinate: destinationCoordinate)
                             
@@ -303,20 +304,20 @@ class HomeVC: UIViewController, Alertable {
     }
     
     @IBAction func cancelBtnWasPressed(_ sender: Any) {
-        DataService.instance.driverIsOnTrip(driverKey: currentUserId!) { (isOnTrip, driverKey, tripKey) in
-            if isOnTrip == true {
-                UpdateService.instance.cancelTrip(withPassengerKey: tripKey!, forDriverKey: driverKey!)
-            }
-        }
-        
-        DataService.instance.passengerIsOnTrip(passengerKey: currentUserId!) { (isOnTrip, driverKey, tripKey) in
-            if isOnTrip == true {
-                UpdateService.instance.cancelTrip(withPassengerKey: self.currentUserId!, forDriverKey: driverKey!)
-            } else {
-                self.removeOverlaysAndAnnotations(forDrivers: false, forPassengers: true)
-                self.centerMapOnUserLocation()
-            }
-        }
+//        DataService.instance.driverIsOnTrip(driverKey: currentUserId!) { (isOnTrip, driverKey, tripKey) in
+//            if isOnTrip == true {
+//                UpdateService.instance.cancelTrip(withPassengerKey: tripKey!, forDriverKey: driverKey!)
+//            }
+//        }
+//        
+//        DataService.instance.passengerIsOnTrip(passengerKey: currentUserId!) { (isOnTrip, driverKey, tripKey) in
+//            if isOnTrip == true {
+//                UpdateService.instance.cancelTrip(withPassengerKey: self.currentUserId!, forDriverKey: driverKey!)
+//            } else {
+//                self.removeOverlaysAndAnnotations(forDrivers: false, forPassengers: true)
+//                self.centerMapOnUserLocation()
+//            }
+//        }
         
         self.actionBtn.isUserInteractionEnabled = true
     }
@@ -349,12 +350,13 @@ class HomeVC: UIViewController, Alertable {
             if destinationTextField.text != "" {
                 UpdateService.instance.updateTripsWithCoordinatesUponRequest()
                 actionBtn.animateButton(shouldLoad: true, withMessage: nil)
-                cancelBtn.fadeTo(alphaValue: 1.0, withDuration: 0.2)
+//                cancelBtn.fadeTo(alphaValue: 1.0, withDuration: 0.2)
                 
                 self.view.endEditing(true)
                 destinationTextField.isUserInteractionEnabled = false
                 self.priceView.fadeTo(alphaValue: 0.0, withDuration: 0.2)
             }
+            break
         case .getDirectionsToPassenger:
             DataService.instance.driverIsOnTrip(driverKey: currentUserId!, handler: { (isOnTrip, driverKey, tripKey) in
                 if isOnTrip == true {
@@ -371,7 +373,7 @@ class HomeVC: UIViewController, Alertable {
                     })
                 }
             })
-            
+            break
         case .startTrip:
             DataService.instance.driverIsOnTrip(driverKey: self.currentUserId!, handler: { (isOnTrip, driverKey, tripKey) in
                 if isOnTrip == true {
@@ -393,6 +395,7 @@ class HomeVC: UIViewController, Alertable {
                     })
                 }
             })
+            break
         case .getDirectionsToDestination:
             DataService.instance.driverIsOnTrip(driverKey: self.currentUserId!, handler: { (isOnTrip, driverKey, tripKey) in
                 if isOnTrip == true {
@@ -407,13 +410,15 @@ class HomeVC: UIViewController, Alertable {
                     })
                 }
             })
+            break
         case .endTrip:
-            DataService.instance.driverIsOnTrip(driverKey: self.currentUserId!, handler: { (isOnTrip, driverKey, tripKey) in
+            DataService.instance.driverIsOnTrip(driverKey: self.currentUserId!) { (isOnTrip, driverKey, tripKey) in
                 if isOnTrip == true {
                     UpdateService.instance.cancelTrip(withPassengerKey: tripKey!, forDriverKey: driverKey!)
                     self.buttonsForDriver(areHidden: true)
                 }
-            })
+            }
+            break
         }
     }
 }
@@ -754,6 +759,7 @@ extension HomeVC: UITextFieldDelegate {
             }
         }
         priceView.fadeTo(alphaValue: 0.0, withDuration: 0.2)
+        self.actionBtn.fadeTo(alphaValue: 0.0, withDuration: 0.2)
         centerMapOnUserLocation()
         return true
     }
@@ -824,7 +830,7 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
         searchMapKitForResultsWithPolyline(forOriginMapItem: nil, withDestinationMapItem: selectedMapItem)
         
         self.getPrice(destinationMapItem: selectedMapItem)
-        
+        self.actionBtn.fadeTo(alphaValue: 1.0, withDuration: 0.2)
         animateTableView(shouldShow: false)
     }
     

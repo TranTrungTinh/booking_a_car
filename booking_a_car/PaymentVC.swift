@@ -3,7 +3,7 @@
 //  booking_a_car
 //
 //  Created by Tran Trung Tinh on 5/11/18.
-//  Copyright © 2018 Caleb Stultz. All rights reserved.
+//  Copyright © 2018 Tran Trung Tinh. All rights reserved.
 //
 
 import UIKit
