@@ -83,7 +83,7 @@ class HomeVC: UIViewController, Alertable {
         
         cancelBtn.alpha = 0.0
         priceView.alpha = 0.0
-        actionBtn.alpha = 0.0
+//        actionBtn.alpha = 0.0
         
         self.view.addSubview(revealingSplashView)
         revealingSplashView.animationType = SplashAnimationType.heartBeat
@@ -191,11 +191,11 @@ class HomeVC: UIViewController, Alertable {
             self.cancelBtn.isHidden = true
             self.centerMapBtn.isHidden = true
         } else {
-//            self.actionBtn.fadeTo(alphaValue: 1.0, withDuration: 0.2)
-//            self.cancelBtn.fadeTo(alphaValue: 1.0, withDuration: 0.2)
+            self.actionBtn.fadeTo(alphaValue: 1.0, withDuration: 0.2)
+            self.cancelBtn.fadeTo(alphaValue: 1.0, withDuration: 0.2)
             self.centerMapBtn.fadeTo(alphaValue: 1.0, withDuration: 0.2)
-            self.actionBtn.isHidden = true
-//            self.cancelBtn.isHidden = false
+            self.actionBtn.isHidden = false
+            self.cancelBtn.isHidden = true
             self.centerMapBtn.isHidden = false
         }
     }
@@ -304,21 +304,28 @@ class HomeVC: UIViewController, Alertable {
     }
     
     @IBAction func cancelBtnWasPressed(_ sender: Any) {
-//        DataService.instance.driverIsOnTrip(driverKey: currentUserId!) { (isOnTrip, driverKey, tripKey) in
-//            if isOnTrip == true {
-//                UpdateService.instance.cancelTrip(withPassengerKey: tripKey!, forDriverKey: driverKey!)
-//            }
-//        }
-//        
-//        DataService.instance.passengerIsOnTrip(passengerKey: currentUserId!) { (isOnTrip, driverKey, tripKey) in
-//            if isOnTrip == true {
-//                UpdateService.instance.cancelTrip(withPassengerKey: self.currentUserId!, forDriverKey: driverKey!)
-//            } else {
-//                self.removeOverlaysAndAnnotations(forDrivers: false, forPassengers: true)
-//                self.centerMapOnUserLocation()
-//            }
-//        }
+        IS_DELETE = true
+        DataService.instance.driverIsOnTrip(driverKey: currentUserId!) { (isOnTrip, driverKey, tripKey) in
+            if IS_DELETE == true {
+                if isOnTrip == true {
+                    UpdateService.instance.cancelTrip(withPassengerKey: tripKey!, forDriverKey: driverKey!)
+                }
+            }
+            
+        }
         
+        DataService.instance.passengerIsOnTrip(passengerKey: currentUserId!) { (isOnTrip, driverKey, tripKey) in
+            if IS_DELETE == true {
+                if isOnTrip == true {
+                    UpdateService.instance.cancelTrip(withPassengerKey: self.currentUserId!, forDriverKey: driverKey!)
+                } else {
+                    self.removeOverlaysAndAnnotations(forDrivers: false, forPassengers: true)
+                    self.centerMapOnUserLocation()
+                }
+            }
+        }
+        
+        IS_DELETE = false
         self.actionBtn.isUserInteractionEnabled = true
     }
     
@@ -350,13 +357,12 @@ class HomeVC: UIViewController, Alertable {
             if destinationTextField.text != "" {
                 UpdateService.instance.updateTripsWithCoordinatesUponRequest()
                 actionBtn.animateButton(shouldLoad: true, withMessage: nil)
-//                cancelBtn.fadeTo(alphaValue: 1.0, withDuration: 0.2)
+                cancelBtn.fadeTo(alphaValue: 1.0, withDuration: 0.2)
                 
                 self.view.endEditing(true)
                 destinationTextField.isUserInteractionEnabled = false
                 self.priceView.fadeTo(alphaValue: 0.0, withDuration: 0.2)
             }
-            break
         case .getDirectionsToPassenger:
             DataService.instance.driverIsOnTrip(driverKey: currentUserId!, handler: { (isOnTrip, driverKey, tripKey) in
                 if isOnTrip == true {
@@ -373,7 +379,6 @@ class HomeVC: UIViewController, Alertable {
                     })
                 }
             })
-            break
         case .startTrip:
             DataService.instance.driverIsOnTrip(driverKey: self.currentUserId!, handler: { (isOnTrip, driverKey, tripKey) in
                 if isOnTrip == true {
@@ -395,7 +400,6 @@ class HomeVC: UIViewController, Alertable {
                     })
                 }
             })
-            break
         case .getDirectionsToDestination:
             DataService.instance.driverIsOnTrip(driverKey: self.currentUserId!, handler: { (isOnTrip, driverKey, tripKey) in
                 if isOnTrip == true {
@@ -410,15 +414,15 @@ class HomeVC: UIViewController, Alertable {
                     })
                 }
             })
-            break
         case .endTrip:
+            IS_DELETE = true
             DataService.instance.driverIsOnTrip(driverKey: self.currentUserId!) { (isOnTrip, driverKey, tripKey) in
-                if isOnTrip == true {
+                if isOnTrip == true && IS_DELETE == true {
                     UpdateService.instance.cancelTrip(withPassengerKey: tripKey!, forDriverKey: driverKey!)
                     self.buttonsForDriver(areHidden: true)
+                    IS_DELETE = false
                 }
             }
-            break
         }
     }
 }
@@ -586,7 +590,7 @@ extension HomeVC: MKMapViewDelegate {
             
             distance = (distance / 1000).rounded(.up)
             
-            self.priceTag.text = "\(Int(distance) * 4)K"
+            self.priceTag.text = "\(Int(distance) * PRICE)K"
             self.priceView.fadeTo(alphaValue: 1.0, withDuration: 0.3)
         }
     }
@@ -759,7 +763,7 @@ extension HomeVC: UITextFieldDelegate {
             }
         }
         priceView.fadeTo(alphaValue: 0.0, withDuration: 0.2)
-        self.actionBtn.fadeTo(alphaValue: 0.0, withDuration: 0.2)
+//        self.actionBtn.fadeTo(alphaValue: 0.0, withDuration: 0.2)
         centerMapOnUserLocation()
         return true
     }
@@ -830,7 +834,7 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
         searchMapKitForResultsWithPolyline(forOriginMapItem: nil, withDestinationMapItem: selectedMapItem)
         
         self.getPrice(destinationMapItem: selectedMapItem)
-        self.actionBtn.fadeTo(alphaValue: 1.0, withDuration: 0.2)
+//        self.actionBtn.fadeTo(alphaValue: 1.0, withDuration: 0.2)
         animateTableView(shouldShow: false)
     }
     

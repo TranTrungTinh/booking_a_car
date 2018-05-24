@@ -74,3 +74,8 @@ let ERROR_MSG_INVALID_EMAIL = "Sorry, the email you've entered appears to be inv
 let ERROR_MSG_EMAIL_ALREADY_IN_USE = "It appears that email is already in use by another user. Please try again."
 let ERROR_MSG_WRONG_PASSWORD = "The password you tried is incorrect. Please try again."
 let ERROR_MSG_UNEXPECTED_ERROR = "There has been an unexpected error. Please try again."
+
+// Defaul Price *1000 VND
+let PRICE = 4
+// Global state
+var IS_DELETE = false
