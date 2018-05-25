@@ -4,7 +4,6 @@
 //
 //  Created by Tran Trung Tinh on 4/18/18.
 //  Copyright © 2018 Trung Tinh. All rights reserved.
-//
 
 import UIKit
 
