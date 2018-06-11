@@ -7,34 +7,34 @@
 	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
 	<string>ca-app-pub-3940256099942544/4411468910</string>
 	<key>CLIENT_ID</key>
-	<string>601394242266-urhuja5l8vmcic7q0fducai3tuphpcav.apps.googleusercontent.com</string>
+	<string>815840818928-u3gmgr0cbc6d8ij7ilr2m4sqhuo8rvu8.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.601394242266-urhuja5l8vmcic7q0fducai3tuphpcav</string>
+	<string>com.googleusercontent.apps.815840818928-u3gmgr0cbc6d8ij7ilr2m4sqhuo8rvu8</string>
 	<key>API_KEY</key>
-	<string>AIzaSyA26iEu8RIQfz5eCyszSzMC1RyvlHzR9fQ</string>
+	<string>AIzaSyCkqfZMZMf58rDO4AIRjbQkuBI5PzsLqPk</string>
 	<key>GCM_SENDER_ID</key>
-	<string>601394242266</string>
+	<string>815840818928</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>MACOS.booking-a-car</string>
 	<key>PROJECT_ID</key>
-	<string>smebber-8bf21</string>
+	<string>smebber-c783e</string>
 	<key>STORAGE_BUCKET</key>
-	<string>smebber-8bf21.appspot.com</string>
+	<string>smebber-c783e.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>IS_ANALYTICS_ENABLED</key>
-	<false></false>
+	<false/>
 	<key>IS_APPINVITE_ENABLED</key>
-	<false></false>
+	<false/>
 	<key>IS_GCM_ENABLED</key>
-	<true></true>
+	<false/>
 	<key>IS_SIGNIN_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:601394242266:ios:c67ae0a947e211cb</string>
+	<string>1:815840818928:ios:c67ae0a947e211cb</string>
 	<key>DATABASE_URL</key>
-	<string>https://smebber-8bf21.firebaseio.com</string>
+	<string>https://smebber-c783e.firebaseio.com</string>
 </dict>
 </plist>
